@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Django
+backend/staticfiles/
+backend/media/
+*.db
+*.sqlite3
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# React Native / Expo
+mobile/.expo/
+mobile/dist/
+mobile/web-build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Credentials & secrets
+**/secrets.*
+**/credentials.*
+*.pem
+*.key
+*.p12
+*.pfx
+*-prod.*
+*-production.*
+service-account*.json
+**/.aws/**
+**/.gcp/**
+**/.azure/**
+
+# Docker
+.docker/
