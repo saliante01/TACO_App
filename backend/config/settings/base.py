@@ -1,8 +1,7 @@
-import os
 from pathlib import Path
 from decouple import config, Csv
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=False, cast=bool)
@@ -20,6 +19,16 @@ INSTALLED_APPS = [
     "corsheaders",
     "drf_spectacular",
     # Local apps
+    "apps.identity",
+    "apps.patients",
+    "apps.treatments",
+    "apps.appointments",
+    "apps.laboratory",
+    "apps.support",
+    "apps.notifications",
+    "apps.education",
+    "apps.audit",
+    "apps.common",
 ]
 
 MIDDLEWARE = [
@@ -53,17 +62,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("DB_NAME"),
-        "USER": config("DB_USER"),
-        "PASSWORD": config("DB_PASSWORD"),
-        "HOST": config("DB_HOST"),
-        "PORT": config("DB_PORT", default="5432"),
-    }
-}
-
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
@@ -84,17 +82,14 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# CORS
 CORS_ALLOW_ALL_ORIGINS = DEBUG
 
-# DRF
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 20,
 }
 
-# DRF Spectacular
 SPECTACULAR_SETTINGS = {
     "TITLE": "TACO App API",
     "DESCRIPTION": "API para monitoreo de pacientes en terapia anticoagulante oral",
