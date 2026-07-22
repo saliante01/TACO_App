@@ -1,3 +1,4 @@
-# pyrefly: ignore [missing-import]
+from .user import User
 from .user_role import UserRole
-__all__ = ["UserRole"]
+
+__all__ = ["User", "UserRole"]
